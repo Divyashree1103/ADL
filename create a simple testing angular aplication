@@ -1,0 +1,61 @@
+Exp create a simple testing angular aplication
+Make sure you have Node.js and npm installed before you start.
+
+Step 1: Install Angular CLI
+Open your terminal or command prompt and run the following command to install Angular CLI globally:
+npm install -g @angular/cli
+
+Step 2: Create a New Angular Project
+Run the following command to create a new Angular project:
+ng new my-angular-app
+
+Step 3: Navigate to the Project Folder
+cd my-angular-app
+
+Step 4: Serve the Application
+Run the following command to start the development server and open your application in a web browser:
+ng serve
+
+By default, your Angular app will be available at http://localhost:4200/.
+
+Step 5: Create a Simple Component
+Open a new terminal window, navigate to your project folder, and run the following command to generate a new component:
+ng generate component greeting
+
+This command will create a new folder named greeting with the necessary files for your component.
+
+
+Step 6: Modify the Component
+Open the src/app/greeting/greeting.component.ts file and modify it as follows:
+
+import { Component, OnInit } from '@angular/core';
+@Component({
+  selector: 'app-greeting',
+  templateUrl: './greeting.component.html',
+  styleUrls: ['./greeting.component.css']
+})
+export class GreetingComponent implements OnInit {
+  message: string = 'Hello, Angular!';
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+}
+
+Step 7: Use the Component
+Open the src/app/app.component.html file and replace its content with:
+
+html
+Copy code
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<app-greeting></app-greeting>
+Step 8: Run the Application
+Save your changes and go back to the terminal. Make sure the ng serve command is still running, and your changes will be automatically reflected in the browser.
+
+Navigate to http://localhost:4200/ in your web browser. You should see your Angular app displaying the greeting message.
+
