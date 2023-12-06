@@ -1,0 +1,235 @@
+Statement - Implement shopping cart functionality using JavaScript. Add features like adding/removing items and updating the total price dynamically.
+
+Explaination -
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+  <div class="container">
+    <h1>Shopping Cart</h1>
+    <div id="items">
+      <div class="item">
+        <span>Item 1 - $10</span>
+        <button onclick="addItem(1, 10)">Add</button>
+        <button onclick="removeItem(1, 10)">Remove</button>
+      </div>
+      <div class="item">
+        <span>Item 2 - $20</span>
+        <button onclick="addItem(2, 20)">Add</button>
+        <button onclick="removeItem(2, 20)">Remove</button>
+      </div>
+      <div class="item">
+        <span>Item 3 - $15</span>
+        <button onclick="addItem(3, 15)">Add</button>
+        <button onclick="removeItem(3, 15)">Remove</button>
+      </div>
+    </div>
+    <h2>Total Price: <span id="totalPrice">$0.00</span></h2>
+  </div>
+<script src="script.js"></script> 
+</body>
+</html>
+```
+
+This HTML code creates a basic shopping cart interface:
+
+- `<!DOCTYPE html>`: Defines the document type and version of HTML being used.
+- `<html lang="en">`: Specifies that the document is in English.
+- `<head>`: Contains metadata and external resource references for the document.
+  - `<meta charset="UTF-8">`: Sets the character encoding to UTF-8, ensuring proper text display.
+  - `<title>Shopping Cart</title>`: Sets the title of the webpage to "Shopping Cart".
+  - `<link rel="stylesheet" href="styles.css">`: Links an external CSS file (`styles.css`) to style the HTML elements.
+- `<body>`: Contains the visible content of the webpage.
+  - `<div class="container">`: Defines a container to hold the shopping cart content.
+    - `<h1>Shopping Cart</h1>`: Displays a heading "Shopping Cart".
+    - `<div id="items">`: Contains a list of items displayed in the cart.
+      - `<div class="item">`: Represents each item in the cart.
+        - `<span>Item 1 - $10</span>`: Displays the item name and price.
+        - `<button onclick="addItem(1, 10)">Add</button>`: Adds an item when clicked by calling the `addItem` function with parameters (item ID and price).
+        - `<button onclick="removeItem(1, 10)">Remove</button>`: Removes an item when clicked by calling the `removeItem` function with parameters (item ID and price). 
+    - `<h2>Total Price: <span id="totalPrice">$0.00</span></h2>`: Displays the total price of all items in the cart.
+
+--
+
+```javascript
+let cart = {};
+
+function addItem(itemId, price) {
+  if (cart[itemId]) {
+    cart[itemId]++;
+  } else {
+    cart[itemId] = 1;
+  }
+  updateTotal(price);
+}
+```
+
+1. `let cart = {};`: This initializes an empty JavaScript object named `cart`. It's used to keep track of the quantity of each item in the cart, where the item ID is the key, and the value represents the quantity.
+
+2. `function addItem(itemId, price) {`: This declares a function named `addItem` that takes two parameters: `itemId` (the unique identifier of the item) and `price` (the price of the item to be added).
+
+3. `if (cart[itemId]) {`: This condition checks if the `cart` object already has an entry for the `itemId`. If an entry exists (the item is already in the cart), it increments the quantity of that item.
+
+4. `cart[itemId]++;`: If the item exists in the `cart`, it increments its quantity by one.
+
+5. `} else { cart[itemId] = 1; }`: If the item does not exist in the `cart` (i.e., it's being added for the first time), it creates an entry for that `itemId` in the `cart` object with a quantity of 1.
+
+6. `updateTotal(price);`: After adding or updating the item quantity in the `cart`, it calls the `updateTotal` function with the `price` of the item as an argument to recalculate the total price of all items in the cart.
+
+```javascript
+function removeItem(itemId, price) {
+  if (cart[itemId] && cart[itemId] > 0) {
+    cart[itemId]--;
+    updateTotal(-price); 
+  }
+}
+```
+
+7. `function removeItem(itemId, price) {`: This defines a function `removeItem` that takes parameters `itemId` and `price`.
+
+8. `if (cart[itemId] && cart[itemId] > 0) {`: This condition checks if the item exists in the `cart` and its quantity is greater than 0 (ensuring there's at least one of this item in the cart).
+
+9. `cart[itemId]--;`: If the condition is met, it decrements the quantity of the item in the `cart`.
+
+10. `updateTotal(-price);`: After adjusting the item's quantity in the `cart`, it calls the `updateTotal` function with a negative `price` argument to deduct the item's price from the total.
+
+```javascript
+function updateTotal(price) {
+  const totalPriceElement = document.getElementById('totalPrice');
+  let totalPrice = parseFloat(totalPriceElement.textContent.replace('$', '')) + price;
+  totalPriceElement.textContent = '$' + totalPrice.toFixed(2);
+}
+```
+
+11. `function updateTotal(price) {`: This defines the `updateTotal` function that takes a `price` argument.
+
+12. `const totalPriceElement = document.getElementById('totalPrice');`: This line selects the HTML element with the `id` of `totalPrice` and stores it in the `totalPriceElement` variable.
+
+13. `let totalPrice = parseFloat(totalPriceElement.textContent.replace('$', '')) + price;`: It extracts the numeric value from the text content of `totalPriceElement`, removes the dollar sign, converts it to a floating-point number, adds the `price` passed as an argument, and stores the result in the `totalPrice` variable.
+
+14. `totalPriceElement.textContent = '$' + totalPrice.toFixed(2);`: Finally, it sets the `textContent` of the `totalPriceElement` back with the updated `totalPrice`, including the dollar sign and limiting the decimals to two places using `toFixed(2)`.
+
+----
+
+Certainly, let's go through the CSS code line by line:
+
+```css
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+```
+
+1. `body`: Selects the `<body>` element of the HTML document.
+2. `font-family: Arial, sans-serif;`: Sets the font family for the text inside the body to Arial, a sans-serif font.
+3. `margin: 0;`: Removes any default margin around the body.
+4. `padding: 0;`: Removes any default padding within the body.
+5. `background-color: white;`: Sets the background color of the body to white.
+
+```css
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px gray;
+}
+```
+
+6. `.container`: Selects elements with the class name `container`.
+7. `max-width: 600px;`: Sets the maximum width of the container to 600 pixels.
+8. `margin: 20px auto;`: Sets a margin of 20 pixels on the top and bottom and auto on the left and right, centering the container horizontally.
+9. `background-color: white;`: Sets the background color of the container to white.
+10. `padding: 20px;`: Sets 20 pixels of padding within the container.
+11. `border-radius: 8px;`: Applies an 8-pixel border-radius to round the corners of the container.
+12. `box-shadow: 0 0 10px gray;`: Adds a box shadow to the container, providing a subtle shadow effect. The shadow has a 10-pixel blur and is colored gray.
+
+```css
+h1 {
+  text-align: center;
+  color: black;
+}
+```
+
+13. `h1`: Selects all `<h1>` elements.
+14. `text-align: center;`: Centers the text within the `<h1>` element.
+15. `color: black;`: Sets the text color to black.
+
+```css
+#items {
+  margin-bottom: 20px;
+}
+```
+
+16. `#items`: Selects the element with the ID of `items`.
+17. `margin-bottom: 20px;`: Adds a bottom margin of 20 pixels to the selected element.
+
+```css
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding: 10px 0;
+}
+```
+
+18. `.item`: Selects elements with the class name `item`.
+19. `display: flex;`: Turns the selected elements into a flex container.
+20. `justify-content: space-between;`: Distributes the child elements with space placed between them horizontally.
+21. `align-items: center;`: Centers the child elements vertically within the flex container.
+22. `border-bottom: 1px solid black;`: Adds a 1-pixel solid black border at the bottom of each `.item`.
+23. `padding: 10px 0;`: Applies 10 pixels of padding to the top and bottom of each `.item`.
+
+```css
+.item span {
+  font-weight: bold;
+}
+```
+
+24. `.item span`: Selects `<span>` elements within elements with the class name `item`.
+25. `font-weight: bold;`: Sets the font weight of the selected `<span>` elements to bold.
+
+```css
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+```
+
+26. `button`: Selects all `<button>` elements.
+27. `padding: 8px 15px;`: Applies 8 pixels of padding to the top and bottom, and 15 pixels to the left and right of each button.
+28. `border: none;`: Removes the default border from buttons.
+29. `border-radius: 4px;`: Adds a 4-pixel border-radius to round the corners of buttons.
+30. `cursor: pointer;`: Changes the cursor to a pointer when hovering over buttons.
+
+```css
+button:hover {
+  background-color: skyblue;
+}
+```
+
+31. `button:hover`: Selects `<button>` elements when they are being hovered over.
+32. `background-color: skyblue;`: Changes the background color to sky blue when the button is being hovered over.
+
+```css
+h2 {
+  text-align: right;
+  color: black;
+}
+```
+
+33. `h2`: Selects all `<h2>` elements.
+34. `text-align: right;`: Right-aligns the text within the `<h2>` element.
+35. `color: black;`: Sets the text color to black.

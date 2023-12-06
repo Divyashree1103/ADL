@@ -1,0 +1,109 @@
+Statement - Implement program for accepting and validation user entered data on web pages.
+
+Explaination -
+
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Data Validation</title>
+  <script>
+    function validateForm() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+```
+
+- `<!DOCTYPE html>`: This declaration specifies the HTML version used in the document.
+- `<html>`, `<head>`, `<title>`: These tags define the basic structure of an HTML document, including its title.
+- `<script>`: This tag contains JavaScript code that will be executed within the HTML document.
+- `function validateForm() {`: Here begins the JavaScript function `validateForm`, which is triggered when the form is submitted.
+
+```javascript
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+```
+
+- `var email = document.getElementById("email").value;`: This line retrieves the value entered into the input field with the ID "email" and stores it in the variable `email`.
+- `var password = document.getElementById("password").value;`: Similarly, this line retrieves the value entered into the input field with the ID "password" and stores it in the variable `password`.
+
+```html
+      if (email === '' || password === '') {
+        alert("Both email and password are required");
+        return false;
+      }
+```
+
+- `if (email === '' || password === '') {`: This checks if either the email or password field is empty.
+- `alert("Both email and password are required");`: If either field is empty, this displays an alert message indicating that both email and password are required.
+- `return false;`: This stops the form submission by returning `false`, preventing the form from being submitted if the fields are empty.
+
+```javascript
+      var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address");
+        return false;
+      }
+```
+
+- `var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;`: This line defines a regular expression (`emailPattern`) that checks for a basic email pattern.
+
+- `^`: Asserts the start of the string.
+- `[^\s@]+`: Matches one or more characters that are not whitespace `\s` or `@`.
+- `@`: Matches the "@" symbol.
+- `[^\s@]+`: Matches one or more characters that are not whitespace `\s` or `@`.
+- `\.`: Matches a literal dot ".".
+- `[^\s@]+`: Matches one or more characters that are not whitespace `\s` or `@`.
+- `$`: Asserts the end of the string.
+
+So, when put together, the regular expression checks for the following pattern:
+
+- Starts with one or more characters that are not whitespace or "@",
+- Followed by an "@",
+- Then followed by one or more characters that are not whitespace or "@",
+- Followed by a dot ".",
+- Finally followed by one or more characters that are not whitespace or "@" till the end of the string.
+
+
+- `if (!emailPattern.test(email)) {`: This tests the entered email against the defined pattern.
+- `alert("Please enter a valid email address");`: If the email doesn't match the pattern, this displays an alert indicating that a valid email address is required.
+- `return false;`: It prevents form submission if the email is not in a valid format.
+
+```javascript
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long");
+        return false;
+      }
+```
+
+- `if (password.length < 6) {`: This checks if the length of the password is less than 6 characters.
+- `alert("Password must be at least 6 characters long");`: If the password is too short, it displays an alert message indicating the minimum character requirement.
+- `return false;`: It prevents form submission if the password is too short.
+
+```javascript
+      alert("Form submitted successfully!");
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h1>User Data Validation</h1>
+  <form onsubmit="return validateForm()">
+    <label>Email:</label>
+    <input type="text" id="email"><br><br>
+
+    <label>Password:</label>
+    <input type="password" id="password"><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
+```
+
+- `alert("Form submitted successfully!");`: If all validations pass, this alert indicates that the form submission was successful.
+- `return true;`: It allows the form submission if all validations are successful.
+
+The HTML structure includes a form with two input fields: Email (type=text) and Password (type=password).
+The `onsubmit` attribute of the form calls the `validateForm()` function defined in the `<script>` tag when the form is submitted.
+The JavaScript function performs validation checks on the email and password fields and prevents form submission if the validation fails.

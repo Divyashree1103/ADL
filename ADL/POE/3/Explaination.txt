@@ -1,0 +1,76 @@
+Statement -  Read and write HTML content with JQUERY
+
+Explaination -
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read and Write HTML with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* CSS styles for the page */
+    </style>
+</head>
+<body>
+    <!-- HTML content -->
+</body>
+</html>
+```
+
+- `<!DOCTYPE html>`: Declares the document type as HTML5.
+- `<html>`: Opens the HTML document.
+- `<head>`: Contains metadata and external resources like scripts and styles.
+  - `<title>`: Sets the title of the page displayed in the browser tab.
+  - `<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>`: Imports jQuery from the CDN (Content Delivery Network). It's included here to use jQuery functionalities in the document.
+  - `<style>`: Defines CSS styles for elements on the page.
+
+```html
+<body>
+    <div id="content">
+        <h1>ABHISHEK SWAMI</h1>
+        <p>Trapped inside an Ubiquitous Chaos</p>
+    </div>
+
+    <button id="readButton">Read HTML</button>
+    <button id="writeButton">Write HTML</button>
+
+    <div id="output"></div>
+
+    <script>
+        // jQuery code within the body
+    </script>
+</body>
+</html>
+```
+
+- `<body>`: Contains the visible content of the webpage.
+  - `<div id="content">`: A div element with the ID "content" containing an `<h1>` heading and a `<p>` paragraph.
+  - `<button>`: Two buttons with IDs "readButton" and "writeButton".
+  - `<div id="output"></div>`: An empty div with the ID "output" where the output of read/write operations will be displayed.
+  - `<script>`: Begins the JavaScript section containing jQuery code.
+
+The JavaScript/jQuery section:
+
+```javascript
+$(document).ready(function() {
+    // Read HTML content of an element
+    $("#readButton").click(function() {
+        var content = $("#content").html();
+        $("#output").html("Read HTML: " + content);
+    });
+
+    // Write HTML content to an element
+    $("#writeButton").click(function() {
+        var newHTML = '<h2>GODSPEED</h2><p>Time is unpredictable entity.</p>';
+        $("#content").html(newHTML);
+        $("#output").html("Written HTML: " + newHTML);
+    });
+});
+```
+
+- `$(document).ready(function() { ... });`: This jQuery function ensures that the code inside it will run after the HTML document is fully loaded.
+- `$("#readButton").click(function() { ... });`: This code adds a click event listener to the element with the ID "readButton". When clicked, it reads the HTML content inside the element with the ID "content" and displays it in the div with the ID "output".
+- `$("#writeButton").click(function() { ... });`: This code adds a click event listener to the element with the ID "writeButton". When clicked, it replaces the HTML content inside the element with the ID "content" with a new HTML structure and displays the new HTML in the div with the ID "output".
+
+This code demonstrates how to use jQuery to read and write HTML content dynamically within a webpage based on button clicks.

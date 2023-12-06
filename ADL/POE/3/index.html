@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read and Write HTML with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: white;
+        }
+        #content {
+            background-color: white;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background-color: navy;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: blue;
+        }
+        #output {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <h1>ABHISHEK SWAMI</h1>
+        <p>Trapped inside an Ubiquitous Chaos</p>
+    </div>
+
+    <button id="readButton">Read HTML</button>
+    <button id="writeButton">Write HTML</button>
+
+    <div id="output"></div>
+
+    <script>
+        $(document).ready(function() {
+            // Read HTML content of an element
+            $("#readButton").click(function() {
+                var content = $("#content").html();
+                $("#output").html("Read HTML: " + content);
+            });
+
+            // Write HTML content to an element
+            $("#writeButton").click(function() {
+                var newHTML = '<h2>GODSPEED</h2><p>Time is unpredictable entity.</p>';
+                $("#content").html(newHTML);
+                $("#output").html("Written HTML: " + newHTML);
+            });
+        });
+    </script>
+</body>
+</html>

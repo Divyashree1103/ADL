@@ -1,0 +1,25 @@
+Statement - Create a simple HTML page with Headings, Paragraphs and lists. Apply basic CSS styling to enhance the pages appearance.
+
+Explaination -
+
+- `<!DOCTYPE html>`: Declares the document type and version as HTML5.
+- `<html>`: Opens the HTML document.
+- `<head>`: Contains metadata about the document, including the page title and styling.
+  - `<title>`: Sets the title of the page displayed in the browser tab.
+  - `<style>`: Contains CSS styling for elements within the HTML body.
+    - `body`: Styles applied to the entire document body, such as font family, background color, text color, margin, and padding.
+    - `h1`: Styles applied to level 1 headings, changing their color.
+    - `p`: Styles applied to paragraphs, setting line height and bottom margin.
+    - `ul`: Styles applied to unordered lists, changing the list style and left margin.
+    - `li`: Styles applied to list items, setting the bottom margin.
+- `<body>`: Begins the content section of the HTML document.
+  - `<h1>`: Level 1 heading displaying the name "ABHISHEK SWAMI" in a color specified by the CSS.
+  - `<p>`: Paragraph describing the purpose of the HTML page.
+  - `<h2>`: Level 2 heading indicating a section title ("What's My Plan ?").
+  - Another `<p>`: Paragraph describing the upcoming plans to explore specific places or cities.
+  - `<ul>`: Unordered list containing three list items.
+    - `<li>`: List items representing the places or cities to explore.
+  - `<h3>`: Level 3 heading ("Traveling: A Journey of Discovery").
+  - Another `<p>`: Paragraph discussing the essence of traveling, echoing the provided text.
+
+This HTML code combines text content with styling rules to create a simple webpage displaying headings, paragraphs, and lists with customized appearance using CSS.

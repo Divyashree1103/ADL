@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Flask Test App</title>
+   <style>
+       body {
+           text-align: center;
+           font-family: Arial, sans-serif;
+           background-color: #f0f0f0;
+       }
+
+       #message-box {
+           margin: 0 auto;
+           padding: 20px;
+           background-color: #fff;
+           border-radius: 10px;
+           box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+           max-width: 400px;
+       }
+
+       #message-box input {
+           width: 100%;
+           padding: 10px;
+           border: 1px solid #ccc;
+           border-radius: 5px;
+           margin-bottom: 10px;
+           font-size: 16px;
+           box-sizing: border-box; /* Include padding and border in the width */
+       }
+
+       #message-box button {
+           background-color: #007BFF;
+           color: #fff;
+           border: none;
+           padding: 10px 20px;
+           border-radius: 5px;
+           font-size: 16px;
+           margin-right: 10px;
+           cursor: pointer;
+       }
+
+       #message-box button:hover {
+           background-color: #0056b3;
+       }
+   </style>
+</head>
+<body>
+   <h1>Flask Test App</h1>
+   <div id="message-box">
+       <form method="POST">
+           <input type="text" name="message" id="message" value="{{ message }}" placeholder="Enter a message" />
+           <br>
+           <button type="submit" name="button" value="Click me">Click me</button>
+           <button type="submit" name="button" value="Clear">Clear</button>
+       </form>
+       <p>{{ message }}</p>
+   </div>
+</body>
+</html>
